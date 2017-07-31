@@ -2,7 +2,7 @@
 
 class CaesarShift
 
-  def self.initialize(spaces)
+  def initialize(spaces)
     spaces = spaces - 26 while spaces > 25
   
     alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]
@@ -19,7 +19,7 @@ class CaesarShift
     end  
   end
   
-  def self.shift(plaintext)
+  def shift(plaintext)
     plainletters = plaintext.downcase.split("")
     cipherletters = []
     for letter in plainletters do
@@ -33,20 +33,10 @@ class CaesarShift
     return ciphertext.upcase
   end
 
-  def self.print_hash
+  def print_hash
     print "cipher:\n"
     print "#{@cipherhash.keys.join("")}\n"
     print "#{@cipherhash.values.join("")}\n".upcase
   end
 
 end
-
-shifter = CaesarShift
-shifter.initialize(ARGV[0].to_i)
-shifter.print_hash
-#plaintext = "Proof of concept"
-plaintext = ARGV[1..ARGV.length].join(" ")
-print "\nplaintext:  #{plaintext.downcase}\n\n"
-ciphertext = shifter.shift(plaintext)
-print "ciphertext: #{ciphertext}\n\n"
-
