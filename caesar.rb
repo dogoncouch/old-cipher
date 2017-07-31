@@ -33,23 +33,20 @@ class CaesarShift
     return ciphertext.upcase
   end
 
-  def self.printhash
-    print "cipherhash: "
-    hash = []
-    for x in @cipherhash.keys do
-      hash << "#{x}: #{@cipherhash[x].upcase}"
-    end
-    print "#{hash.join(', ')}\n\n"
+  def self.print_hash
+    print "cipher:\n"
+    print "#{@cipherhash.keys.join("")}\n"
+    print "#{@cipherhash.values.join("")}\n".upcase
   end
 
 end
 
 shifter = CaesarShift
 shifter.initialize(ARGV[0].to_i)
-shifter.printhash
+shifter.print_hash
 #plaintext = "Proof of concept"
 plaintext = ARGV[1..ARGV.length].join(" ")
-print "plaintext:  #{plaintext}\n\n"
+print "\nplaintext:  #{plaintext.downcase}\n\n"
 ciphertext = shifter.shift(plaintext)
 print "ciphertext: #{ciphertext}\n\n"
 
