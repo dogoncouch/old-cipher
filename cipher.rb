@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# To Do: add input/output files
+
 require_relative 'caesar'
 require 'optparse'
 
@@ -20,16 +22,16 @@ if options[:caesar]
   
   if options[:verbose]
     shifter.print_hash
-    print "\nplaintext:  #{plaintext.downcase}\n\n"
+    print "\nplaintext:  #{plaintext.downcase}\n"
     print "ciphertext: "
   end
 
-  if options[:verbose] or not options[:output]
-    print "#{ciphertext}"
-  end
-
-  if options[:verbose]
-    print "\n\n"
-  end
-
 end
+
+
+print "#{ciphertext}" if ciphertext and options[:verbose] or not options[:output]
+
+if options[:verbose]
+  print "\n\n"
+end
+
