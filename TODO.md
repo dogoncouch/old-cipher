@@ -7,4 +7,5 @@
 * Add Vigenere cipher
 * Add code page cipher
 * Add frequency analysis helper
+* Add cipher descriptions/history
 
