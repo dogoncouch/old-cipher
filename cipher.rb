@@ -18,7 +18,7 @@ plaintext = ARGV.join(" ") if not options[:input]
 
 if options[:caesar]
   shifter = CaesarShift.new(options[:caesar].to_i)
-  ciphertext = shifter.shift(plaintext)
+  ciphertext = shifter.cipher(plaintext)
   
   if options[:verbose]
     shifter.print_hash

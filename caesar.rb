@@ -16,10 +16,15 @@ class CaesarShift
       else
         @cipherhash[letter] = numhash[alphahash[letter] + spaces]
       end
-    end  
+    end
+    
+    @decipherhash = {}
+    for letter in @cipherhash do
+      @decipherhash[@cipherhash[letter]] = letter
+    end
   end
   
-  def shift(plaintext)
+  def cipher(plaintext)
     plainletters = plaintext.downcase.split("")
     cipherletters = []
     for letter in plainletters do
