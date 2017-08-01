@@ -12,9 +12,9 @@ class CaesarShift
     @cipherhash = {}
     for letter in alphahash.keys do
       if alphahash[letter] + spaces > 25
-        @cipherhash[letter] = numhash[alphahash[letter] + spaces - 26]
+        @cipherhash[letter] = numhash[alphahash[letter] + spaces - 26].upcase
       else
-        @cipherhash[letter] = numhash[alphahash[letter] + spaces]
+        @cipherhash[letter] = numhash[alphahash[letter] + spaces].upcase
       end
     end
     
@@ -35,13 +35,13 @@ class CaesarShift
       end
     end
     ciphertext = cipherletters.join("")
-    return ciphertext.upcase
+    return ciphertext
   end
 
   def print_hash
     print "cipher:\n"
     print "#{@cipherhash.keys.join("")}\n"
-    print "#{@cipherhash.values.join("")}\n".upcase
+    print "#{@cipherhash.values.join("")}\n"
   end
 
 end
