@@ -14,7 +14,7 @@ OptionParser.new do |opt|
   opt.on('--help', 'Display usage') { puts opt ; exit }
 end.parse!
 
-plaintext = ARGV.join(" ")
+plaintext = ARGV.join(" ") if not options[:input]
 
 if options[:caesar]
   shifter = CaesarShift.new(options[:caesar].to_i)
