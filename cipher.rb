@@ -61,7 +61,8 @@ def main
     
     if options[:verbose]
       ciph.print_hash(reverse = options[:reverse])
-      print "\nplaintext:  #{plaintext.downcase}\n"
+      options[:reverse] ? plaintext.upcase! : plaintext.downcase!
+      print "\nplaintext:  #{plaintext}\n"
       print "ciphertext: "
     end
 

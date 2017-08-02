@@ -39,11 +39,11 @@ class Vigenere
         if alphahash[letter] + alphahash[word[n-1]] > 25
           value = numhash[alphahash[letter] + alphahash[word[n-1]] - 26]
           cipherhash[letter[0]] = value.upcase
-          decipherhash[value] = letter.upcase
+          decipherhash[value] = letter
         else
           value = numhash[alphahash[letter] + alphahash[word[n-1]]]
           cipherhash[letter[0]] = value.upcase
-          decipherhash[value] = letter.upcase
+          decipherhash[value] = letter
         end
       end
       @cipherhashes[n] = cipherhash
@@ -69,8 +69,7 @@ class Vigenere
     end
     
     ciphertext = cipherletters.join("")
-    return ciphertext.upcase
-
+    return ciphertext
   end
 
   def print_hash(reverse = false)
