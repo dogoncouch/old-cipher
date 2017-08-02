@@ -23,8 +23,8 @@
 
 # To Do: add input/output files
 
-require_relative 'caesar'
-require_relative 'vigenere'
+require_relative 'ciphers/caesar'
+require_relative 'ciphers/vigenere'
 require 'optparse'
 
 def main
