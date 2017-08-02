@@ -53,7 +53,6 @@ class Vigenere
         hashlist << key[1]
       end
       print "#{hashlist.join("")}\n"
-      #print "#{h[1].join("")}\n"
     end
   end
 
