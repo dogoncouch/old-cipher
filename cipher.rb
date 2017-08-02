@@ -57,7 +57,7 @@ def main
 
   elsif options[:vigenere]
     ciph = Vigenere.new(options[:vigenere])
-    ciphertext = ciph.cipher(plaintext)
+    ciphertext = ciph.cipher(plaintext, reverse = options[:reverse])
     
     if options[:verbose]
       ciph.print_hash(reverse = options[:reverse])
