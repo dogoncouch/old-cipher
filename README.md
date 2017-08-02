@@ -13,4 +13,5 @@
 # Examples
     ./cipher.rb --caesar 5 "The beagle has landed!"
     ./cipher.rb --vigenere grapefruit --input memo.txt --output memo-code.txt
+    ./cipher.rb --vigenere grapefruit --input memo.txt --output memo-code.txt --reverse
 
