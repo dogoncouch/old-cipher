@@ -41,16 +41,17 @@ class CaesarShift
     
     @decipherhash = {}
     for letter in @cipherhash do
-      @decipherhash[@cipherhash[letter]] = letter
+      @decipherhash[letter[1].downcase] = letter[0].upcase
     end
   end
   
-  def cipher(plaintext)
+  def cipher(plaintext, reverse = false)
     plainletters = plaintext.downcase.split("")
     cipherletters = []
+    reverse ? hash = @cipherhash : hash = @decipherhash
     for letter in plainletters do
-      if @cipherhash.keys.include? letter
-        cipherletters << @cipherhash[letter]
+      if hash.keys.include? letter
+        cipherletters << hash[letter]
       else
         cipherletters << letter
       end
@@ -59,10 +60,15 @@ class CaesarShift
     return ciphertext
   end
 
-  def print_hash
+  def print_hash( reverse = false)
     print "cipher:\n"
-    print "#{@cipherhash.keys.join("")}\n"
-    print "#{@cipherhash.values.join("")}\n"
+    if reverse
+      print "#{@cipherhash.values.join("").downcase}\n"
+      print "#{@cipherhash.keys.join("").upcase}\n"
+    else
+      print "#{@cipherhash.keys.join("")}\n"
+      print "#{@cipherhash.values.join("")}\n"
+    end
   end
 
 end

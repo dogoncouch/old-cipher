@@ -34,6 +34,7 @@ def main
     opt.on('--vigenere WORD', 'Use Vigenere cipher') { |o| options[:vigenere] = o }
     opt.on('--input FILE', 'Set input file') { |o| options[:input] = o }
     opt.on('--output FILE', 'Set output file') { |o| options[:output] = o }
+    opt.on('--reverse', 'Set decipher mode') { options[:reverse] = true }
     opt.on('--verbose', 'Set verbose output') { options[:verbose] = true }
     opt.on('--help', 'Display usage') { puts opt ; exit }
   end.parse!
@@ -41,15 +42,15 @@ def main
   if options[:input]
     plaintext = File.read(options[:input])
   else
-    plaintext = ARGV.join(" ") if not options[:input]
+    plaintext = ARGV.join(" ")
   end
 
   if options[:caesar]
     ciph = CaesarShift.new(options[:caesar].to_i)
-    ciphertext = ciph.cipher(plaintext)
+    options[:reverse] ? ciphertext = ciph.cipher(plaintext, reverse = true) : ciphertext = ciph.cipher(plaintext)
     
     if options[:verbose]
-      ciph.print_hash
+      ciph.print_hash(reverse = options[:reverse])
       print "\nplaintext:  #{plaintext.downcase}\n"
       print "ciphertext: "
     end
@@ -59,7 +60,7 @@ def main
     ciphertext = ciph.cipher(plaintext)
     
     if options[:verbose]
-      ciph.print_hash
+      ciph.print_hash(reverse = options[:reverse])
       print "\nplaintext:  #{plaintext.downcase}\n"
       print "ciphertext: "
     end
