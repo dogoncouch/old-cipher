@@ -6,43 +6,47 @@ require_relative 'caesar'
 require_relative 'vigenere'
 require 'optparse'
 
-options = {}
-OptionParser.new do |opt|
-  opt.on('--caesar SPACES', 'Enable Caesar shift') { |o| options[:caesar] = o }
-  opt.on('--vigenere WORD', 'Enable Vigenere cipher') { |o| options[:vigenere] = o }
-  opt.on('--input FILE', 'Set input file') { |o| options[:input] = o }
-  opt.on('--output FILE', 'Set output file') { |o| options[:output] = o }
-  opt.on('--verbose', 'Set verbose output') { options[:verbose] = true }
-  opt.on('--help', 'Display usage') { puts opt ; exit }
-end.parse!
-
-plaintext = ARGV.join(" ") if not options[:input]
-
-if options[:caesar]
-  ciph = CaesarShift.new(options[:caesar].to_i)
-  ciphertext = ciph.cipher(plaintext)
+def main
+  options = {}
+  OptionParser.new do |opt|
+    opt.on('--caesar SPACES', 'Use Caesar shift') { |o| options[:caesar] = o }
+    opt.on('--vigenere WORD', 'Use Vigenere cipher') { |o| options[:vigenere] = o }
+    opt.on('--input FILE', 'Set input file') { |o| options[:input] = o }
+    opt.on('--output FILE', 'Set output file') { |o| options[:output] = o }
+    opt.on('--verbose', 'Set verbose output') { options[:verbose] = true }
+    opt.on('--help', 'Display usage') { puts opt ; exit }
+  end.parse!
   
-  if options[:verbose]
-    ciph.print_hash
-    print "\nplaintext:  #{plaintext.downcase}\n"
-    print "ciphertext: "
+  plaintext = ARGV.join(" ") if not options[:input]
+
+  if options[:caesar]
+    ciph = CaesarShift.new(options[:caesar].to_i)
+    ciphertext = ciph.cipher(plaintext)
+    
+    if options[:verbose]
+      ciph.print_hash
+      print "\nplaintext:  #{plaintext.downcase}\n"
+      print "ciphertext: "
+    end
+
+  elsif options[:vigenere]
+    ciph = Vigenere.new(options[:vigenere])
+    ciphertext = ciph.cipher(plaintext)
+    
+    if options[:verbose]
+      ciph.print_hash
+      print "\nplaintext:  #{plaintext.downcase}\n"
+      print "ciphertext: "
+    end
+
   end
 
-elsif options[:vigenere]
-  ciph = Vigenere.new(options[:vigenere])
-  ciphertext = ciph.cipher(plaintext)
-  
+  print "#{ciphertext}" if ciphertext and options[:verbose] or not options[:output]
+
   if options[:verbose]
-    ciph.print_hash
-    print "\nplaintext:  #{plaintext.downcase}\n"
-    print "ciphertext: "
+    print "\n\n"
   end
 
 end
 
-print "#{ciphertext}" if ciphertext and options[:verbose] or not options[:output]
-
-if options[:verbose]
-  print "\n\n"
-end
-
+main
