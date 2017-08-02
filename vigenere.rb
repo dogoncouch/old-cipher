@@ -11,8 +11,13 @@ class Vigenere
     @hashes = {}
     word.downcase!
     for n in (1..word.length).to_a do
+      cipherhash = {}
       for letter in alphahash.keys do
-        cipherhash[letter] = numhash[alphahash[letter] + alphahash[word[n-1]]]
+        if alphahash[letter] + alphahash[word[n-1]] > 25
+          cipherhash[letter] = numhash[alphahash[letter] + alphahash[word[n-1]] - 26].upcase
+        else
+          cipherhash[letter] = numhash[alphahash[letter] + alphahash[word[n-1]]].upcase
+        end
       end
       
       @hashes[n] = cipherhash
@@ -24,14 +29,15 @@ class Vigenere
     plainletters = plaintext.downcase.split("")
     cipherletters = []
     
-    a = 1
-    for n in (1..plainletters.length).to_a do
-      if @hashes[0].include? plainletters[n-1]
+    a = 0
+    for letter in plainletters do
+      if @hashes[1].keys.include? letter
         a = a + 1
-        a = a - @hashes.length if a > @hashes.length
-        cipherletters << @hashes[a[plainletters[n-1]]]
+        a = 1 if a > @hashes.length
+        cipherletters << @hashes[a][letter]
       else
-        cipherletters << plainletters
+        cipherletters << letter
+      end
     end
     
     ciphertext = cipherletters.join("")
@@ -42,7 +48,12 @@ class Vigenere
   def print_hash
     print "cipher:\n"
     for h in @hashes do
-      print "#{h.values.join("")}\n".upcase
+      hashlist = []
+      for key in h[1] do
+        hashlist << key[1]
+      end
+      print "#{hashlist.join("")}\n"
+      #print "#{h[1].join("")}\n"
     end
   end
 
