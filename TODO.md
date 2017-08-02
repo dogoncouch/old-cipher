@@ -1,11 +1,10 @@
 # To Do
 
 * Add superclass for ciphers
-* Add decipher method
+* Add decipher method (or reverse boolean)
 * Add letter -> number cipher
-* Add affine cipher
-* Add Vigenere cipher
+* Add Affine cipher
 * Add code page cipher
-* Add frequency analysis helper
+* Add frequency analysis helper?
 * Add cipher descriptions/history
 
