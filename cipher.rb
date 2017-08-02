@@ -17,7 +17,11 @@ def main
     opt.on('--help', 'Display usage') { puts opt ; exit }
   end.parse!
   
-  plaintext = ARGV.join(" ") if not options[:input]
+  if options[:input]
+    plaintext = File.read(options[:input])
+  else
+    plaintext = ARGV.join(" ") if not options[:input]
+  end
 
   if options[:caesar]
     ciph = CaesarShift.new(options[:caesar].to_i)
@@ -41,7 +45,11 @@ def main
 
   end
 
-  print "#{ciphertext}" if ciphertext and options[:verbose] or not options[:output]
+  if options[:output]
+    File.open(options[:output], 'w') { |f| f.write(ciphertext) }
+  end
+
+  print "#{ciphertext}" if options[:verbose] or not options[:output]
 
   if options[:verbose]
     print "\n\n"
