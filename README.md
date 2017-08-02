@@ -1,7 +1,7 @@
 # Historic Ciphers
 
 # Options
-    Usage: cipher [options]
+    Usage: ./cipher.rb [options]
         --caesar SPACES              Use Caesar shift
         --vigenere WORD              Use Vigenere cipher
         --input FILE                 Set input file
