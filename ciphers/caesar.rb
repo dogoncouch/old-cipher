@@ -65,9 +65,6 @@ class CaesarShift
     if reverse
       print "#{@decipherhash.keys.join("")}\n"
       print "#{@decipherhash.values.join("")}\n"
-
-      #print "#{@cipherhash.values.join("")}\n"
-      #print "#{@cipherhash.keys.join("")}\n"
     else
       print "#{@cipherhash.keys.join("")}\n"
       print "#{@cipherhash.values.join("")}\n"

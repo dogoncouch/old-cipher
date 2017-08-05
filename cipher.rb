@@ -47,7 +47,7 @@ def main
 
   if options[:caesar]
     ciph = CaesarShift.new(options[:caesar].to_i)
-    options[:reverse] ? ciphertext = ciph.cipher(plaintext, reverse = true) : ciphertext = ciph.cipher(plaintext)
+    ciphertext = ciph.cipher(plaintext, reverse = options[:reverse])
     
     if options[:verbose]
       ciph.print_hash(reverse = options[:reverse])
