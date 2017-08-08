@@ -5,6 +5,7 @@
 * Add Affine cipher
 * Add code page cipher
     * Vigenere with input file
-* Add frequency analysis helper?
-* Add cipher descriptions/history
+    * Ignore non-letter content
+* Add Enigma cipher
+* Add cipher descriptions/history to documentation
 
