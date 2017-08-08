@@ -7,5 +7,5 @@
     * Vigenere with input file
     * Ignore non-letter content
 * Add Enigma cipher
-* Add cipher descriptions/history to documentation
+* Add a basic transposition cipher
 
