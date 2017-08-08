@@ -31,9 +31,9 @@ def main
   options = {}
   OptionParser.new do |opt|
     opt.on('--caesar SPACES', 'Use Caesar shift') { |o| options[:caesar] = o }
-    opt.on('--vigenere WORD', 'Use Vigenere cipher') { |o| options[:vigenere] = o }
-    opt.on('--input FILE', 'Set input file') { |o| options[:input] = o }
-    opt.on('--output FILE', 'Set output file') { |o| options[:output] = o }
+    opt.on('--vigenere KEYWORD', 'Use Vigenere cipher') { |o| options[:vigenere] = o }
+    opt.on('--input FILE', 'Inpupt from FILE (default: CLI args)') { |o| options[:input] = o }
+    opt.on('--output FILE', 'Output to FILE') { |o| options[:output] = o }
     opt.on('--reverse', 'Set decipher mode') { options[:reverse] = true }
     opt.on('--verbose', 'Set verbose output') { options[:verbose] = true }
     opt.on('--help', 'Display usage') { puts opt ; exit }
