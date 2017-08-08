@@ -8,4 +8,5 @@
     * Ignore non-letter content
 * Add Enigma cipher
 * Add a basic transposition cipher
+* Add option to retain capitalization
 
