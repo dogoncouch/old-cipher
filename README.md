@@ -1,7 +1,7 @@
 # Historic Ciphers
 
 ## Options
-Usage: ./cipher.rb [options]
+    Usage: ./cipher.rb [options]
         --caesar SPACES              Use Caesar shift
         --vigenere WORD              Use Vigenere cipher
         --input FILE                 Inpupt from FILE (default: CLI args)
@@ -27,4 +27,4 @@ The Vigenere cipher was invented in the 16th century, and for a few centuries wa
 The Vigenere cipher was eventually cracked by figuring out the keyword length. and then cracking each Caesar cipher one by one.
 
 ## Bibliography
-Most of the information in these descriptions is from "The Code Book", written by Simon Singh and published in the year 2000, which is a great read for anyone interested in cryptography, history, or good writing.
+Most of the information in these descriptions is from "The Code Book", written by Simon Singh and published in the year 2000, which is a great read for anyone interested in cryptography, history, or quality writing.
